@@ -12,22 +12,26 @@ public class News {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
+
+    @Column(name = "title")
     private String title;
+
+    @Column(name="createdDate")
     private Date createdDate;
+
     @Column(name = "text", columnDefinition = "TEXT")
     private String Text;
+
 
     public News() {
 
     }
 
-    //TODO fix Text data type
     public News(String title, Date createdDate, String text) {
         this.title = title;
         this.createdDate = createdDate;
         Text = text;
     }
-
 
     public Long getId() {
         return id;
