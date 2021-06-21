@@ -8,6 +8,7 @@ import java.util.Objects;
 @Entity
 @Table(name="news")
 public class News {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -21,7 +22,6 @@ public class News {
 
     @Column(name = "text", columnDefinition = "TEXT")
     private String Text;
-
 
     public News() {
 
