@@ -20,7 +20,7 @@ public class NewsController {
         System.out.println("news news ...");
         List<News> news = newsService.getNews();
         model.addAttribute("news", news);
-        return "/WEB-INF/views/list-news.html";
+        return "list-news";
     }
 
     @GetMapping("/showForm")

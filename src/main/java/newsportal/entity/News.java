@@ -22,7 +22,6 @@ public class News {
     @Column(name = "text", columnDefinition = "TEXT")
     private String Text;
 
-
     public News() {
 
     }
