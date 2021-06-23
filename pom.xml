@@ -29,6 +29,14 @@
         <hsqldb.version>1.8.0.10</hsqldb.version>
     </properties>
 
+    <repositories>
+        <!-- ... possibly other repository elements ... -->
+        <repository>
+            <id>spring-milestone</id>
+            <name>Spring Milestone Repository</name>
+            <url>https://repo.spring.io/milestone</url>
+        </repository>
+    </repositories>
     <dependencies>
         <!-- Spring MVC Dependency -->
         <dependency>
@@ -143,6 +151,15 @@
             <artifactId>spring-core</artifactId>
             <version>5.3.3</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity4 -->
+        <!-- https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity5 -->
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
+            <version>3.0.4.RELEASE</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
