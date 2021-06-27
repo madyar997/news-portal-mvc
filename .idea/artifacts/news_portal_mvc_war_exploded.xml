@@ -1,11 +1,17 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="news-portal-mvc:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/news_portal_mvc_war_exploded</output-path>
+    <output-path>$PROJECT_DIR$/target/news-portal-mvc</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>news-portal-mvc</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="news-portal-mvc" />
-          <element id="library" level="application" name="popper.js" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:5.1.0.RELEASE" />
@@ -51,9 +57,16 @@
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:5.4.2" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:5.4.2" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:5.4.2" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-data:5.1.1.RELEASE" />
+          <element id="library" level="project" name="Maven: javax.xml.bind:jaxb-api:2.4.0-b180830.0359" />
+          <element id="library" level="project" name="Maven: javax.activation:javax.activation-api:1.2.0" />
+          <element id="library" level="project" name="Maven: org.springframework.data:spring-data-commons:2.1.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-core:5.3.3" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jcl:5.3.3" />
         </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/news-portal-mvc/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="news-portal-mvc/web/Web" />
     </root>

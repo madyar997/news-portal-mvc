@@ -22,9 +22,9 @@
 <body>
 <div class="container">
     <div class="col-md-offset-1 col-md-10">
-        <h2>News Portal</h2>
+        <jsp:include page="fragments/header.jsp" />
         <hr/>
-        <header th:insert="fragments/header.jsp :: header"> </header>
+        <hr/>
         <input type="button" value="Add News"
                onclick="window.location.href='showForm'; return false;"
                class="btn btn-primary"/>

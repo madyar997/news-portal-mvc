@@ -50,4 +50,9 @@ public class NewsController {
         return "news-form";
     }
 
+    @GetMapping("/about")
+    public String about(){
+        return "about";
+    }
+
 }
