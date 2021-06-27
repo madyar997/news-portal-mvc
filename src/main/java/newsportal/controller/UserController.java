@@ -1,43 +1,68 @@
 package newsportal.controller;
 
-import newsportal.entity.User;
+import newsportal.entity.security.User;
+import newsportal.service.SecurityService;
+import newsportal.service.UserService;
+import newsportal.validator.UserValidator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/user/")
 public class UserController {
-    @GetMapping("/register")
-    public String showRegistrationForm(WebRequest request, Model model) {
-        User user = new User();
-        model.addAttribute("user", user);
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private SecurityService securityService;
+
+    @Autowired
+    private UserValidator userValidator;
+
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+    public String registration(Model model) {
+        model.addAttribute("userForm", new User());
         return "registration";
     }
 
-//    @PostMapping("/user/registration")
-//    public ModelAndView registerUserAccount(
-//            @ModelAttribute("user") @Valid User user,
-//            HttpServletRequest request,
-//            Errors errors) {
-//
-//        try {
-//            org.springframework.security.core.userdetails.User registered = userService.registerNewUserAccount(userDto);
-//        } catch (UserAlreadyExistException uaeEx) {
-//            mav.addObject("message", "An account for that username/email already exists.");
-//            return mav;
-//        }
-//
-//        // rest of the implementation
-//    }
+    @RequestMapping(value = "/registration", method = RequestMethod.POST)
+    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
+        userValidator.validate(userForm, bindingResult);
+        if (bindingResult.hasErrors()) {
+            return "registration";
+        }
+        userService.save(userForm);
+
+        securityService.autoLogin(userForm.getUsername(), userForm.getConfirmPassword());
+
+        return "redirect:/welcome";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login(Model model, String error, String logout) {
+        if (error != null) {
+            model.addAttribute("error", "Username or password is incorrect");
+        }
+        if (logout != null) {
+            model.addAttribute("message", "Logged out successfully.");
+        }
+        return "login";
+    }
+
+    @RequestMapping(value = {"/", "welcome"}, method = RequestMethod.GET)
+    public String welcome(Model model) {
+        return "welcome";
+    }
+
+    @RequestMapping(value = "/admin", method = RequestMethod.GET)
+    public String admin(Model model) {
+        return "admin";
+    }
+
 
 }

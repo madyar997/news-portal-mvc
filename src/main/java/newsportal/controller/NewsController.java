@@ -2,6 +2,7 @@ package newsportal.controller;
 
 import newsportal.entity.News;
 import newsportal.service.NewsService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,12 +13,15 @@ import java.util.List;
 @RequestMapping("/newsportal/")
 public class NewsController {
 
+    static Logger log = Logger.getLogger(NewsController.class.getName());
+
     @Autowired
     private NewsService newsService;
 
     @GetMapping("")
     public String getNews(Model model) {
         System.out.println("news news ...");
+        log.info("inside the NewsController getNews method");
         List<News> news = newsService.getNews();
         model.addAttribute("news", news);
         return "list-news";
