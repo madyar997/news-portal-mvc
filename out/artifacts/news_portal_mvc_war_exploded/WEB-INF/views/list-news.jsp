@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%--<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>--%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +23,7 @@
 <body>
 <div class="container">
     <div class="col-md-offset-1 col-md-10">
-        <jsp:include page="fragments/header.jsp" />
+        <jsp:include page="header.jsp" />
         <hr/>
         <hr/>
         <input type="button" value="Add News"

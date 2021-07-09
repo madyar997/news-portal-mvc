@@ -1,6 +1,6 @@
 package newsportal.validator;
 
-import newsportal.entity.security.User;
+import newsportal.entity.User;
 import newsportal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

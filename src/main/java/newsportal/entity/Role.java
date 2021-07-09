@@ -1,4 +1,4 @@
-package newsportal.entity.security;
+package newsportal.entity;
 
 import javax.persistence.*;
 import java.util.Set;

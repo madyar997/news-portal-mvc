@@ -1,6 +1,6 @@
 package newsportal.service;
 
-import newsportal.entity.security.User;
+import newsportal.entity.User;
 
 public interface UserService {
     void save(User user);

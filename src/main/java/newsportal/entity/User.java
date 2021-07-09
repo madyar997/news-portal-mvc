@@ -1,4 +1,4 @@
-package newsportal.entity.security;
+package newsportal.entity;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -18,7 +18,7 @@ public class User {
     private String password;
 
     @Transient
-    transient private String confirmPassword;//transient так как мы его никуда не записываем при сериализации обекта
+    private String confirmPassword;//transient так как мы его никуда не записываем при сериализации обекта
 
     @ManyToMany
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name="user_id"),

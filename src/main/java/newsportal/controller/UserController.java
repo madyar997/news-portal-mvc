@@ -1,6 +1,6 @@
 package newsportal.controller;
 
-import newsportal.entity.security.User;
+import newsportal.entity.User;
 import newsportal.service.SecurityService;
 import newsportal.service.UserService;
 import newsportal.validator.UserValidator;
@@ -40,7 +40,7 @@ public class UserController {
 
         securityService.autoLogin(userForm.getUsername(), userForm.getConfirmPassword());
 
-        return "redirect:/welcome";
+        return "welcome";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
