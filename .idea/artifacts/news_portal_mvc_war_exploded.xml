@@ -53,6 +53,11 @@
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:5.4.2" />
           <element id="library" level="project" name="Maven: org.springframework:spring-core:5.3.3" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jcl:5.3.3" />
+          <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
+          <element id="library" level="project" name="Maven: org.springframework.data:spring-data-jpa:1.10.2.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.data:spring-data-commons:1.12.2.RELEASE" />
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjrt:1.8.9" />
+          <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.7.21" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="news-portal-mvc/web/Web" />

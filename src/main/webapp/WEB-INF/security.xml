@@ -7,21 +7,27 @@ http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/security
 http://www.springframework.org/schema/security/spring-security.xsd">
     <http auto-config="true">
-        <intercept-url pattern="/newsportal/admin"
+        <intercept-url pattern="/admin"
                        access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/newsportal"
+                       access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
+        <form-login login-page="/login" default-target-url="/welcome" authentication-failure-url="/login?error"
+                    username-parameter="username" password-parameter="password"/>
+        <logout logout-success-url="/login?logout"/>
     </http>
 
-    <authentication-manager>
-        <authentication-provider>
-            <user-service>
-                <user name="admin" password="{noop}1234" authorities="ROLE_ADMIN"/>
-            </user-service>
+    <beans:bean id="userDetailsServiceImpl" class="newsportal.service.UserDetailsServiceImpl"/>
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider user-service-ref="userDetailsServiceImpl">
+            <password-encoder ref="passwordEncoder"/>
         </authentication-provider>
     </authentication-manager>
     <beans:bean id="passwordEncoder"
-                class="org.springframework.security.crypto.password.NoOpPasswordEncoder"
-                factory-method="getInstance">
+                class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+        <beans:constructor-arg name="strength" value="11"/>
     </beans:bean>
+
+
 </beans:beans>
 
 
