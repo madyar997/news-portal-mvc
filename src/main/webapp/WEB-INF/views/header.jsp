@@ -2,9 +2,12 @@
          pageEncoding="ISO-8859-1" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%--<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>--%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-
+<%
+    request.setCharacterEncoding("UTF-8");
+    response.setCharacterEncoding("UTF-8");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,8 +28,13 @@
             <a class="p-2 text-dark" href="/newsportal/?lang=en">En</a>
             <a class="p-2 text-dark" href="/newsportal/?lang=ru">Ru</a>
             <c:if test="${pageContext.request.userPrincipal.name != null}">
-                <a class="p-2 text-dark" href="/admin"><spring:message code="label.admin-menu"/></a>
-                <a class="p-2 text-dark" href="/user"><spring:message code="label.user-menu"/></a>
+                <sec:authorize access="hasRole('ROLE_ADMIN')">
+                    <a class="p-2 text-dark" href="/admin"><spring:message code="label.admin-menu"/></a>
+                </sec:authorize>
+                <sec:authorize access="hasRole('ROLE_USER')">
+                    <a class="p-2 text-dark" href="/user"><spring:message code="label.user-menu"/></a>
+                </sec:authorize>
+
                 <form id="logoutForm" method="POST" action="${contextPath}/logout">
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 </form>

@@ -17,7 +17,6 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>WEB-INF/NewsPortal-servlet.xml</param-value>
     </context-param>
-
     <servlet-mapping>
         <servlet-name>NewsPortal</servlet-name>
         <url-pattern>/</url-pattern>

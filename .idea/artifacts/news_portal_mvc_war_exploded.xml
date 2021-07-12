@@ -93,6 +93,7 @@
         </element>
       </element>
       <element id="javaee-facet-resources" facet="news-portal-mvc/web/Web" />
+      <element id="library" level="project" name="Maven: org.springframework.security:spring-security-taglibs:5.1.7.RELEASE" />
     </root>
   </artifact>
 </component>
