@@ -9,5 +9,8 @@
         <module name="news-portal-mvc" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="news-portal-mvc" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
